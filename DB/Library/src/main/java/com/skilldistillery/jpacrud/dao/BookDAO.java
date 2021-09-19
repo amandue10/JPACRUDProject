@@ -8,5 +8,6 @@ public interface BookDAO {
 	
 	Book findById(int bookId);
 	List<Book> findAll();
+	Book create(Book book);
 
 }

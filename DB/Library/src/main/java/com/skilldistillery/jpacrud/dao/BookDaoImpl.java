@@ -31,6 +31,13 @@ private EntityManager em;
 		return em.createQuery(jpql, Book.class).getResultList();
 	}
 	
+	@Override
+	public Book create(Book book) {
+		em.persist(book);
+		
+		return book;
+	}
+	
 	
 	
 	
