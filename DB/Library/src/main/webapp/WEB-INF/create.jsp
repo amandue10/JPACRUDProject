@@ -5,10 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Book Added</title>
-<jsp:include page="../bootstrapHead.jsp"></jsp:include>
+<jsp:include page="bootstrapHead.jsp"></jsp:include>
 </head>
 <body>
-<h3>Book Added</h3>
+<div>
+	
+	</div>
+
 <br>
 	<div class="footer">
 	<p>
@@ -16,6 +19,6 @@
 	</p>
 	</div>
 
-<jsp:include page="../bootstrapFoot.jsp"></jsp:include>
+<jsp:include page="bootstrapFoot.jsp"></jsp:include>
 </body>
 </html>

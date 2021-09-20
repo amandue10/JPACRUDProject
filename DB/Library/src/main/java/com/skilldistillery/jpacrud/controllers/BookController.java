@@ -31,39 +31,46 @@ public class BookController {
 			
 		}
 		
-		@RequestMapping(path = "create.do", method=RequestMethod.GET)
-		public String create(@RequestParam("id") int id,
-				@RequestParam("title") String title,
-				@RequestParam("author") String author, 
-				@RequestParam("description") String description, 
-				@RequestParam("publishedDate") Date publishedDate,
-				@RequestParam("totalPages") String totalPages,
-				@RequestParam("genre") String genre, 
-				@RequestParam("isbn") String isbn,
-				Model model) {
-			String success = "success";
-			String fail= "fail";
+		
+		
+		@RequestMapping(path = "create.do")
+		public String bookForm() {
+			return "create";
 			
-			Book b = new Book();
-			b.setId(id);
-			b.setTitle(title);
-			b.setAuthor(author);
-			b.setDescription(description);
-			b.setPublishedDate(publishedDate);
-			b.setTotalPages(totalPages);
-			b.setGenre(genre);
-			b.setIsbn(isbn);
-			
-			Book dbBook = dao.create(b);
-			model.addAttribute("book", b);
-			if(dbBook.getId() > 0) {
-				return success;
-			} else {
-			
-			return fail;
 		}
+//--------------------------------------------------------------------------------------------------------------------------------			
+			
+			@RequestMapping(path = "remove.do")
+			public String removeBook(int id, Model model) {
+				boolean result = dao.deleteBook(id);
+						
+				if (result == true) {
+					return"success";
+				} else {
+					return "fail";
+				}
+			}
+				
+				@RequestMapping(path = "edit.do", method=RequestMethod.GET)
+				public String editBook(@RequestParam int id, Model model) {
+					String viewName = "edit";
+					Book book = dao.findById(id);
+					model.addAttribute("book", book);
+					model.addAttribute("id", id);
+					return viewName;
+				}
+				
+				@RequestMapping(path="edit.do", method=RequestMethod.POST, params="book")
+				public String editForm(Book book, @RequestParam("id") int id, Model model) {
+					
+					
+					String viewName = "home";
+						dao.updateBook(id, book);
+					
+					return viewName;
+				}
 		
 		}
-	}
+	
 	
 

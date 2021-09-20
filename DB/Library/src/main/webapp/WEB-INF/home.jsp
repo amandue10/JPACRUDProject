@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Library Database</title>
+<jsp:include page="bootstrapHead.jsp"></jsp:include>
 </head>
 <body>
 <h1>Welcome to the Library Database</h1>
@@ -16,7 +17,7 @@
 <form class="form" action="create.do" method="GET">
 <fieldset>
 <legend><h3>Add Book</h3></legend>
-<label>Book ID: <input type="text" name="id" placeholder="Enter Book ID"/></label><br >
+		<label>Book ID: <input type="text" name="id" placeholder="Enter Book ID"/></label><br >
 		<label >Book Title: <input type="text" name="title" placeholder="Enter Book Title"/></label><br />
 		<label >Book Author: <input type="text" name="author" placeholder="Enter Author" /></label><br />
 		<label>Book Description: <input type="text" name="description" placeholder="Enter Description of Book" /></label><br />
@@ -64,5 +65,6 @@
 
 </div>
 </fieldset>
+<jsp:include page="bootstrapFoot.jsp"></jsp:include>
 </body>
 </html>

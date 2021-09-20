@@ -22,7 +22,7 @@ public class Book {
 	private String description;
 	
 	@Column(name="published_date")
-	private Date publishedDate;
+	private String publishedDate;
 	
 	@Column(name="total_pages")
 	private String totalPages;
@@ -71,15 +71,18 @@ public class Book {
 		this.description = description;
 	}
 
-	public Date getPublishedDate() {
+	
+	
+
+	
+
+	public String getPublishedDate() {
 		return publishedDate;
 	}
 
-	public void setPublishedDate(Date publishedDate) {
+	public void setPublishedDate(String publishedDate) {
 		this.publishedDate = publishedDate;
 	}
-
-	
 
 	public String getTotalPages() {
 		return totalPages;
