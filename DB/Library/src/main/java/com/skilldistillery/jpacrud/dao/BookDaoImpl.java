@@ -34,13 +34,21 @@ private EntityManager em;
 
 	
 	@Override
-	public Book create(Book book) {
-		System.out.println(book);
-		em.persist(book);
+	public Book create(int id, Book book) {
+		Book addBook =em.find(Book.class, id);
+		
+		addBook.setId(book.getId());
+		addBook.setTitle(book.getTitle());
+		addBook.setAuthor(book.getAuthor());
+		addBook.setDescription(book.getDescription());
+		addBook.setPublishedDate(book.getPublishedDate());
+		addBook.setTotalPages(book.getTotalPages());
+		addBook.setGenre(book.getGenre());
+		addBook.setIsbn(book.getIsbn());
+		
 		em.flush();
 		
-		System.out.println(book);
-		return book;
+		return addBook;
 	}
 	
 	
@@ -60,7 +68,6 @@ private EntityManager em;
 		dbBook.setTotalPages(book.getTotalPages());
 		dbBook.setGenre(book.getGenre());
 		dbBook.setIsbn(book.getIsbn());
-		
 		em.flush();
 
 		return dbBook;
@@ -73,11 +80,13 @@ private EntityManager em;
 		em.remove(book);
 		
 		book = em.find(Book.class, id);
-		result = ! em.contains(book);
+		result = !em.contains(book);
 		
 				
 		return result;
 	}
+
+
 	
 	
 	

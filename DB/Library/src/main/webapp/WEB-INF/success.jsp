@@ -4,10 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Successful Deletion</title>
+<jsp:include page="bootstrapHead.jsp"></jsp:include>
 </head>
 <body>
-<h3>Success</h3>
+<h3>You've successfully deleted your book</h3>
 
+<br>
+	<div class="footer">
+	<p>
+		<a href="home.do"><strong>Return to Library Menu</strong></a>
+	</p>
+	</div>
+<jsp:include page="bootstrapFoot.jsp"></jsp:include>
 </body>
 </html>

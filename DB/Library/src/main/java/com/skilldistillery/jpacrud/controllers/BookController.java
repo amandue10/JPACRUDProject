@@ -33,42 +33,44 @@ public class BookController {
 		
 		
 		
-		@RequestMapping(path = "create.do")
-		public String bookForm() {
-			return "create";
+		@RequestMapping(path = "create.do", method = RequestMethod.POST)
+		public String createBook(Book book, int id,  Model model) {
+			String viewName = "create";
+			Book addBook = new Book();
+				addBook=dao.create(id, book);
+			model.addAttribute("book", addBook);
+			
+			
+			return viewName;
 			
 		}
+		
+//		@RequestMapping(path="create.do")
+//		public String bookForm() {
+//			return "create"	;
+//		}
 //--------------------------------------------------------------------------------------------------------------------------------			
 			
 			@RequestMapping(path = "remove.do")
 			public String removeBook(int id, Model model) {
 				boolean result = dao.deleteBook(id);
-						
+				
 				if (result == true) {
 					return"success";
 				} else {
-					return "fail";
+					return "fail";  //error happens at else stmt, trying to delete null
 				}
 			}
 				
-				@RequestMapping(path = "edit.do", method=RequestMethod.GET)
-				public String editBook(@RequestParam int id, Model model) {
+				@RequestMapping(path = "edit.do", method=RequestMethod.POST)
+				public String editBook(Book book,int id, Model model) {
 					String viewName = "edit";
-					Book book = dao.findById(id);
-					model.addAttribute("book", book);
-					model.addAttribute("id", id);
+					Book dbBook = dao.updateBook(id,book);
+					model.addAttribute("book", dbBook);
 					return viewName;
 				}
 				
-				@RequestMapping(path="edit.do", method=RequestMethod.POST, params="book")
-				public String editForm(Book book, @RequestParam("id") int id, Model model) {
-					
-					
-					String viewName = "home";
-						dao.updateBook(id, book);
-					
-					return viewName;
-				}
+				
 		
 		}
 	

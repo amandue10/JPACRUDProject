@@ -4,9 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Successful Edit</title>
+<jsp:include page="bootstrapHead.jsp"></jsp:include>
 </head>
 <body>
-edit page
+<h3>You've successfully edited your book</h3>
+
+<br>
+	<div class="footer">
+	<p>
+		<a href="home.do"><strong>Return to Library Menu</strong></a>
+
+	</p>
+	</div>
+<jsp:include page="bootstrapFoot.jsp"></jsp:include>
 </body>
 </html>
